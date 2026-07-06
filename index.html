@@ -7,165 +7,115 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
         
         body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: #ffffff;
-            overflow-x: hidden;
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
         }
 
-        .header-swoosh {
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 450px;
-            height: 250px;
-            background: linear-gradient(135deg, #003a8c 0%, #001f4d 100%);
-            clip-path: ellipse(80% 90% at 90% 10%);
-            z-index: 0;
-        }
-
-        .talent-blue { color: #003a8c; }
-        .bg-talent-blue { background-color: #003a8c; }
-
-        .form-input {
-            width: 100%;
-            border: 1px solid #d1d5db;
-            border-radius: 4px;
-            padding: 0.75rem;
-            margin-top: 0.5rem;
-            background: #fdfdfd;
-            transition: all 0.2s;
-        }
-
-        .form-input:focus {
-            outline: none;
-            border-color: #003a8c;
-            background: #fff;
-            box-shadow: 0 0 0 3px rgba(0, 58, 140, 0.1);
+        .gradient-blue {
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
         }
 
         .category-number {
-            width: 30px;
-            height: 30px;
+            width: 32px;
+            height: 32px;
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 4px;
-            background-color: #003a8c;
+            border-radius: 50%;
+            background-color: #1e40af;
             color: white;
             font-weight: bold;
             flex-shrink: 0;
         }
 
-        .quiz-card {
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        .competency-icon {
+            color: #3b82f6;
+            width: 24px;
+            text-align: center;
+        }
+
+        .form-input {
+            width: 100%;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.5rem;
+            padding: 0.75rem;
+            margin-top: 0.5rem;
+            transition: all 0.2s;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
         }
 
         .progress-bar {
-            height: 6px;
-            background-color: #e5e7eb;
-            border-radius: 10px;
+            height: 8px;
+            background-color: #e2e8f0;
+            border-radius: 4px;
             overflow: hidden;
         }
 
         .progress-fill {
             height: 100%;
-            background-color: #003a8c;
-            transition: width 0.4s ease;
+            background-color: #3b82f6;
+            transition: width 0.3s ease;
         }
 
-        .logo-symbol {
-            fill: #003a8c;
+        .hidden-details {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
         }
 
-        .SARS-box {
-            background-color: #001f4d;
-            border-radius: 8px;
-            color: white;
-            padding: 24px;
-        }
-
-        .competency-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 12px 0;
-            border-bottom: 1px solid #f3f4f6;
+        .show-details {
+            max-height: 300px;
         }
     </style>
 </head>
-<body class="text-slate-800 antialiased">
-    <div class="header-swoosh"></div>
+<body class="text-slate-800">
 
     <!-- Header Section -->
-    <header class="relative z-10 max-w-7xl mx-auto px-6 py-8">
-        <div class="flex flex-col md:flex-row justify-between items-start gap-8">
-            <!-- Actual Matching Logo -->
-            <div class="flex items-start gap-3">
-                <svg width="48" height="48" viewBox="0 0 100 100" class="logo-symbol">
-                    <path d="M20,10 L45,10 L45,60 L20,85 Z" fill="#003a8c" opacity="0.9"/>
-                    <path d="M80,10 L55,10 L55,90 L80,65 Z" fill="#3b82f6"/>
-                </svg>
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 gradient-blue rounded-lg flex items-center justify-center text-white font-bold text-2xl">
+                    T
+                </div>
                 <div>
-                    <div class="flex items-baseline">
-                        <span class="text-3xl font-bold talent-blue tracking-tight">Talent</span>
-                        <span class="text-3xl font-light talent-blue tracking-tight">Acquire</span>
-                    </div>
-                    <div class="text-[10px] tracking-[0.3em] font-semibold text-slate-400 mt-1 uppercase">
-                        Talent. Acquire. Grow.
-                    </div>
+                    <h1 class="text-xl font-bold text-slate-900 tracking-tight leading-none">TalentAcquire</h1>
+                    <p class="text-[10px] uppercase tracking-widest text-slate-500 font-semibold">Talent. Acquire. Grow.</p>
+                </div>
+            </div>
+            
+            <div class="w-full md:w-64">
+                <div class="flex justify-between text-xs font-semibold mb-1">
+                    <span>Quiz Progress</span>
+                    <span id="progress-text">0%</span>
+                </div>
+                <div class="progress-bar">
+                    <div id="progress-fill" class="progress-fill" style="width: 0%"></div>
                 </div>
             </div>
         </div>
     </header>
 
-    <main class="relative z-10 max-w-7xl mx-auto px-6 pb-20">
+    <main class="max-w-6xl mx-auto px-4 py-8">
         <!-- Hero Section -->
-        <div class="flex flex-col md:flex-row gap-12 mt-12 mb-16 items-center">
-            <div class="flex-1">
-                <div class="inline-flex items-center gap-2 mb-4">
-                    <div class="h-px w-12 bg-blue-200"></div>
-                    <span class="text-sm font-bold text-blue-500 uppercase tracking-widest">Official Assessment</span>
+        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 mb-8 overflow-hidden relative">
+            <div class="flex flex-col md:flex-row gap-8 items-center">
+                <div class="flex-1">
+                    <h2 class="text-3xl font-extrabold text-blue-900 mb-2">ADMINISTRATIVE ASSISTANT<br>INTERVIEW GUIDE</h2>
+                    <p class="text-slate-600 max-w-xl">
+                        This guide provides a list of possible interview questions to help assess the candidate's skills, experience, and fit for the Administrative Assistant Internship position.
+                    </p>
                 </div>
-                
-                <h2 class="text-5xl md:text-7xl font-black talent-blue mb-8 leading-none tracking-tighter">
-                    ADMINISTRATIVE<br>ASSISTANT <span class="text-blue-500">QUIZ</span>
-                </h2>
-
-                <!-- Beautiful Candidate Name Placement -->
-                <div class="relative inline-block mb-10 group">
-                    <div class="absolute -inset-1 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-lg blur opacity-25 group-hover:opacity-40 transition duration-1000 group-hover:duration-200"></div>
-                    <div class="relative px-8 py-5 bg-white border border-slate-100 rounded-lg leading-none flex items-center divide-x divide-slate-200">
-                      <span class="flex items-center space-x-5">
-                        <span class="pr-6 text-slate-600 font-bold uppercase tracking-widest text-[10px]">Candidate</span>
-                        <span class="text-2xl font-black text-slate-900 tracking-tight">Nathi Nokwanda Khumalo</span>
-                      </span>
-                    </div>
+                <div class="hidden md:block w-48 h-48 relative">
+                    <img src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&q=80&w=400" alt="Office Space" class="rounded-2xl object-cover w-full h-full shadow-lg rotate-3">
                 </div>
-
-                <p class="text-xl text-slate-500 max-w-2xl leading-relaxed italic">
-                    Assessing the skills, experience, and professional alignment for the internship position.
-                </p>
-            </div>
-            <div class="w-full md:w-96 relative">
-                <div class="aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl rotate-1 group transition-transform hover:rotate-0 duration-500">
-                    <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&q=80&w=600" alt="Professional Portfolio" class="w-full h-full object-cover">
-                </div>
-            </div>
-        </div>
-
-        <!-- Progress Tracking -->
-        <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-100 mb-12 sticky top-4 z-40">
-            <div class="flex justify-between items-center mb-2">
-                <span class="text-sm font-bold talent-blue uppercase tracking-widest">Quiz Progress</span>
-                <span id="progress-text" class="text-sm font-black text-slate-900">0%</span>
-            </div>
-            <div class="progress-bar">
-                <div id="progress-fill" class="progress-fill" style="width: 0%"></div>
             </div>
         </div>
 
@@ -177,181 +127,232 @@
                     <h3 class="font-bold uppercase tracking-wide">Possible Interview Questions</h3>
                 </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
-            <!-- Questions Column -->
-            <div class="lg:col-span-2 space-y-12">
-                <form id="quiz-form" class="space-y-16">
+                <form id="quiz-form" class="space-y-12 pb-12">
                     
                     <!-- Category 1 -->
-                    <section class="space-y-8">
-                        <div class="flex items-center gap-4 border-b border-slate-100 pb-6">
+                    <section class="space-y-6">
+                        <div class="flex items-center gap-4 border-b pb-4">
                             <span class="category-number">1</span>
-                            <h4 class="font-bold text-xl text-slate-900 tracking-tight">BACKGROUND & MOTIVATION</h4>
+                            <h4 class="font-bold text-lg text-slate-800">BACKGROUND & MOTIVATION</h4>
                         </div>
                         
-                        <div class="space-y-8 ml-2 md:ml-12">
-                            <div><label class="block font-bold text-slate-700 mb-2">1. Tell us a little about yourself.</label><textarea name="q1_1" class="form-input" rows="4"></textarea></div>
-                            <div><label class="block font-bold text-slate-700 mb-2">2. Why are you interested in this Administrative Assistant Internship?</label><textarea name="q1_2" class="form-input" rows="4"></textarea></div>
-                            <div><label class="block font-bold text-slate-700 mb-2">3. What do you hope to learn and achieve through this internship?</label><textarea name="q1_3" class="form-input" rows="4"></textarea></div>
-                            <div><label class="block font-bold text-slate-700 mb-2">4. How do you see this opportunity contributing to your career goals?</label><textarea name="q1_4" class="form-input" rows="4"></textarea></div>
-                            <div><label class="block font-bold text-slate-700 mb-2">5. What do you know about TalentAcquire and our mission?</label><textarea name="q1_5" class="form-input" rows="4"></textarea></div>
-                            <div><label class="block font-bold text-slate-700 mb-2">6. Where do you see your professional self in 5 years?</label><textarea name="q1_6" class="form-input" rows="4"></textarea></div>
+                        <div class="space-y-4 ml-2 md:ml-12">
+                            <div>
+                                <label class="block font-medium text-slate-700">Tell us a little about yourself.</label>
+                                <textarea name="q1_1" class="form-input" rows="3" placeholder="Summarize your background..."></textarea>
+                            </div>
+                            <div>
+                                <label class="block font-medium text-slate-700">Why are you interested in this Administrative Assistant Internship?</label>
+                                <textarea name="q1_2" class="form-input" rows="3"></textarea>
+                            </div>
+                            <div>
+                                <label class="block font-medium text-slate-700">What do you hope to learn and achieve through this internship?</label>
+                                <textarea name="q1_3" class="form-input" rows="3"></textarea>
+                            </div>
+                            <div>
+                                <label class="block font-medium text-slate-700">How do you see this opportunity contributing to your career goals?</label>
+                                <textarea name="q1_4" class="form-input" rows="3"></textarea>
+                            </div>
                         </div>
                     </section>
 
                     <!-- Category 2 -->
-                    <section class="space-y-6 section-hover">
-                        <div class="flex items-center gap-4 border-b border-slate-200 pb-4">
+                    <section class="space-y-6">
+                        <div class="flex items-center gap-4 border-b pb-4">
                             <span class="category-number">2</span>
-                            <h4 class="font-bold text-lg text-slate-800 uppercase tracking-tight">Skills & Experience</h4>
+                            <h4 class="font-bold text-lg text-slate-800">SKILLS & EXPERIENCE</h4>
                         </div>
                         
-                        <div class="space-y-6 ml-2 md:ml-12">
-                            <div><label class="block font-semibold text-slate-700 text-sm">7. What administrative or office experience do you have?</label><textarea name="q2_1" class="form-input" rows="3"></textarea></div>
-                            <div><label class="block font-semibold text-slate-700 text-sm">8. How do you prioritize and manage multiple tasks or deadlines?</label><textarea name="q2_2" class="form-input" rows="3"></textarea></div>
-                            <div><label class="block font-semibold text-slate-700 text-sm">9. Which computer programs and tools are you proficient in?</label><textarea name="q2_3" class="form-input" rows="2"></textarea></div>
-                            <div><label class="block font-semibold text-slate-700 text-sm">10. Describe a time when you had to organize information or records accurately.</label><textarea name="q2_4" class="form-input" rows="3"></textarea></div>
-                            <div><label class="block font-semibold text-slate-700 text-sm">11. How do you handle sensitive or confidential information?</label><textarea name="q2_5" class="form-input" rows="3"></textarea></div>
-                            <div><label class="block font-semibold text-slate-700 text-sm">12. What is your experience with travel arrangements or calendar management?</label><textarea name="q2_6" class="form-input" rows="3"></textarea></div>
-                            <div><label class="block font-semibold text-slate-700 text-sm">13. How do you ensure your workstation and filing systems stay organized?</label><textarea name="q2_7" class="form-input" rows="3"></textarea></div>
+                        <div class="space-y-4 ml-2 md:ml-12">
+                            <div>
+                                <label class="block font-medium text-slate-700">What administrative or office experience do you have (at work, school or volunteering)?</label>
+                                <textarea name="q2_1" class="form-input" rows="3"></textarea>
+                            </div>
+                            <div>
+                                <label class="block font-medium text-slate-700">How do you prioritize and manage multiple tasks or deadlines?</label>
+                                <textarea name="q2_2" class="form-input" rows="3"></textarea>
+                            </div>
+                            <div>
+                                <label class="block font-medium text-slate-700">Which computer programs and tools are you proficient in (e.g., Microsoft Office, Excel, Outlook)?</label>
+                                <textarea name="q2_3" class="form-input" rows="2"></textarea>
+                            </div>
+                            <div>
+                                <label class="block font-medium text-slate-700">Describe a time when you had to organize information or records accurately.</label>
+                                <textarea name="q2_4" class="form-input" rows="3"></textarea>
+                            </div>
                         </div>
                     </section>
 
                     <!-- Category 3 -->
-                    <section class="space-y-6 section-hover">
-                        <div class="flex items-center gap-4 border-b border-slate-200 pb-4">
+                    <section class="space-y-6">
+                        <div class="flex items-center gap-4 border-b pb-4">
                             <span class="category-number">3</span>
-                            <h4 class="font-bold text-lg text-slate-800 uppercase tracking-tight">Communication & Interpersonal</h4>
+                            <h4 class="font-bold text-lg text-slate-800">COMMUNICATION & INTERPERSONAL SKILLS</h4>
                         </div>
                         
-                        <div class="space-y-6 ml-2 md:ml-12">
-                            <div><label class="block font-semibold text-slate-700 text-sm">14. How would you describe your communication style?</label><textarea name="q3_1" class="form-input" rows="2"></textarea></div>
-                            <div><label class="block font-semibold text-slate-700 text-sm">15. Give an example of how you handled a difficult situation with a colleague.</label><textarea name="q3_2" class="form-input" rows="3"></textarea></div>
-                            <div><label class="block font-semibold text-slate-700 text-sm">16. How do you ensure clear and professional communication in emails?</label><textarea name="q3_3" class="form-input" rows="3"></textarea></div>
-                            <div><label class="block font-semibold text-slate-700 text-sm">17. Are you comfortable working in a team? Share an example.</label><textarea name="q3_4" class="form-input" rows="3"></textarea></div>
-                            <div><label class="block font-semibold text-slate-700 text-sm">18. How do you handle a situation where you don't know the answer to a caller's question?</label><textarea name="q3_5" class="form-input" rows="3"></textarea></div>
-                            <div><label class="block font-semibold text-slate-700 text-sm">19. Describe your experience working with diverse personalities and work styles.</label><textarea name="q3_6" class="form-input" rows="3"></textarea></div>
-                            <div><label class="block font-semibold text-slate-700 text-sm">20. How do you prepare for a meeting you are responsible for coordinating?</label><textarea name="q3_7" class="form-input" rows="3"></textarea></div>
+                        <div class="space-y-4 ml-2 md:ml-12">
+                            <div>
+                                <label class="block font-medium text-slate-700">How would you describe your communication style?</label>
+                                <textarea name="q3_1" class="form-input" rows="2"></textarea>
+                            </div>
+                            <div>
+                                <label class="block font-medium text-slate-700">Give an example of how you handled a difficult situation with a colleague or client.</label>
+                                <textarea name="q3_2" class="form-input" rows="3"></textarea>
+                            </div>
+                            <div>
+                                <label class="block font-medium text-slate-700">How do you ensure clear and professional communication in emails and calls?</label>
+                                <textarea name="q3_3" class="form-input" rows="3"></textarea>
+                            </div>
+                            <div>
+                                <label class="block font-medium text-slate-700">Are you comfortable working in a team? Share an example.</label>
+                                <textarea name="q3_4" class="form-input" rows="3"></textarea>
+                            </div>
                         </div>
                     </section>
 
                     <!-- Category 4 -->
-                    <section class="space-y-6 section-hover">
-                        <div class="flex items-center gap-4 border-b border-slate-200 pb-4">
+                    <section class="space-y-6">
+                        <div class="flex items-center gap-4 border-b pb-4">
                             <span class="category-number">4</span>
-                            <h4 class="font-bold text-lg text-slate-800 uppercase tracking-tight">Problem Solving & Initiative</h4>
+                            <h4 class="font-bold text-lg text-slate-800">PROBLEM SOLVING & INITIATIVE</h4>
                         </div>
                         
-                        <div class="space-y-6 ml-2 md:ml-12">
-                            <div><label class="block font-semibold text-slate-700 text-sm">21. Describe a time when you identified a problem and took initiative to solve it.</label><textarea name="q4_1" class="form-input" rows="3"></textarea></div>
-                            <div><label class="block font-semibold text-slate-700 text-sm">22. How do you handle pressure or tight deadlines?</label><textarea name="q4_2" class="form-input" rows="3"></textarea></div>
-                            <div><label class="block font-semibold text-slate-700 text-sm">23. What steps do you take to ensure accuracy in your work?</label><textarea name="q4_3" class="form-input" rows="3"></textarea></div>
-                            <div><label class="block font-semibold text-slate-700 text-sm">24. How do you stay organized and keep track of important tasks?</label><textarea name="q4_4" class="form-input" rows="3"></textarea></div>
-                            <div><label class="block font-semibold text-slate-700 text-sm">25. Describe a time you improved a specific process at work or school.</label><textarea name="q4_5" class="form-input" rows="3"></textarea></div>
-                            <div><label class="block font-semibold text-slate-700 text-sm">26. How do you handle interruptions when working on a high-priority task?</label><textarea name="q4_6" class="form-input" rows="3"></textarea></div>
-                            <div><label class="block font-semibold text-slate-700 text-sm">27. What would you do if you realized you made a significant mistake in a report?</label><textarea name="q4_7" class="form-input" rows="3"></textarea></div>
+                        <div class="space-y-4 ml-2 md:ml-12">
+                            <div>
+                                <label class="block font-medium text-slate-700">Describe a time when you identified a problem and took initiative to solve it.</label>
+                                <textarea name="q4_1" class="form-input" rows="3"></textarea>
+                            </div>
+                            <div>
+                                <label class="block font-medium text-slate-700">How do you handle pressure or tight deadlines?</label>
+                                <textarea name="q4_2" class="form-input" rows="3"></textarea>
+                            </div>
+                            <div>
+                                <label class="block font-medium text-slate-700">What steps do you take to ensure accuracy in your work?</label>
+                                <textarea name="q4_3" class="form-input" rows="3"></textarea>
+                            </div>
+                            <div>
+                                <label class="block font-medium text-slate-700">How do you stay organized and keep track of important tasks?</label>
+                                <textarea name="q4_4" class="form-input" rows="3"></textarea>
+                            </div>
                         </div>
                     </section>
 
                     <!-- Category 5 -->
-                    <section class="space-y-6 section-hover">
-                        <div class="flex items-center gap-4 border-b border-slate-200 pb-4">
+                    <section class="space-y-6">
+                        <div class="flex items-center gap-4 border-b pb-4">
                             <span class="category-number">5</span>
-                            <h4 class="font-bold text-lg text-slate-800 uppercase tracking-tight">Culture & Fit</h4>
+                            <h4 class="font-bold text-lg text-slate-800">CULTURE & FIT</h4>
                         </div>
                         
-                        <div class="space-y-6 ml-2 md:ml-12">
-                            <div><label class="block font-semibold text-slate-700 text-sm">28. What type of work environment helps you do your best?</label><textarea name="q5_1" class="form-input" rows="3"></textarea></div>
-                            <div><label class="block font-semibold text-slate-700 text-sm">29. What are your strengths and how do they relate to this role?</label><textarea name="q5_2" class="form-input" rows="3"></textarea></div>
-                            <div><label class="block font-semibold text-slate-700 text-sm">30. Why should we select you for this Administrative Assistant Internship?</label><textarea name="q5_3" class="form-input" rows="3"></textarea></div>
-                            <div><label class="block font-semibold text-slate-700 text-sm">31. What does "professionalism" mean to you in an office setting?</label><textarea name="q5_4" class="form-input" rows="3"></textarea></div>
-                            <div><label class="block font-semibold text-slate-700 text-sm">32. How do you handle receiving constructive criticism or feedback?</label><textarea name="q5_5" class="form-input" rows="3"></textarea></div>
-                            <div><label class="block font-semibold text-slate-700 text-sm">33. What motivates you to perform your best every single day?</label><textarea name="q5_6" class="form-input" rows="3"></textarea></div>
+                        <div class="space-y-4 ml-2 md:ml-12">
+                            <div>
+                                <label class="block font-medium text-slate-700">What type of work environment helps you do your best?</label>
+                                <textarea name="q5_1" class="form-input" rows="3"></textarea>
+                            </div>
+                            <div>
+                                <label class="block font-medium text-slate-700">What are your strengths and how do they relate to this role?</label>
+                                <textarea name="q5_2" class="form-input" rows="3"></textarea>
+                            </div>
+                            <div>
+                                <label class="block font-medium text-slate-700">Why should we select you for this Administrative Assistant Internship?</label>
+                                <textarea name="q5_3" class="form-input" rows="3"></textarea>
+                            </div>
                         </div>
                     </section>
 
                     <!-- Declaration Section -->
-                    <section class="bg-white border-2 border-slate-100 rounded-xl p-8 space-y-8">
-                        <div class="flex items-center gap-4 border-b border-slate-100 pb-6">
-                            <div class="w-10 h-10 rounded bg-slate-100 flex items-center justify-center text-slate-600">
-                                <i class="fa-solid fa-user-shield"></i>
+                    <section class="bg-slate-50 border border-slate-200 rounded-2xl p-6 space-y-6">
+                        <div class="flex items-center gap-3 text-blue-900 border-b border-blue-100 pb-4">
+                            <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center">
+                                <i class="fa-solid fa-user-check"></i>
                             </div>
-                            <h3 class="font-bold uppercase tracking-widest text-lg text-slate-900">Declaration</h3>
+                            <h3 class="font-bold uppercase">Declaration</h3>
                         </div>
                         
-                        <p class="text-sm font-medium text-slate-500">Please answer the following question truthfully:</p>
+                        <p class="text-sm text-slate-600">Please answer the following question truthfully:</p>
                         
-                        <div class="SARS-box">
-                            <div class="flex gap-6 items-start">
-                                <div class="w-10 h-10 rounded-full border-2 border-white flex items-center justify-center shrink-0">
-                                    <span class="font-bold text-xl">?</span>
-                                </div>
-                                <div>
-                                    <p class="font-bold text-xl mb-2">Are you related to anyone who is a South African Revenue Services (SARS) Employee?</p>
-                                </div>
+                        <div class="bg-blue-900 text-white p-5 rounded-xl flex gap-4 items-start">
+                            <div class="w-8 h-8 rounded-full border-2 border-white flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-question text-sm"></i>
                             </div>
-
-                            <div class="mt-8 flex gap-12 ml-16">
-                                <label class="flex items-center gap-4 cursor-pointer">
-                                    <input type="radio" name="sars_related" value="yes" class="w-6 h-6 accent-blue-500" id="sars-yes">
-                                    <span class="text-lg font-bold">Yes</span>
-                                </label>
-                                <label class="flex items-center gap-4 cursor-pointer">
-                                    <input type="radio" name="sars_related" value="no" class="w-6 h-6 accent-blue-500" id="sars-no" checked>
-                                    <span class="text-lg font-bold">No</span>
-                                </label>
-                            </div>
+                            <p class="font-medium">Are you related to anyone who is a South African Revenue Services (SARS) Employee?</p>
                         </div>
 
-                        <div id="sars-details" class="hidden-details ml-2">
-                            <div class="p-6 bg-slate-50 rounded-lg border border-slate-200">
-                                <label class="block italic text-slate-600 mb-3">If yes, please provide full name, relationship and their position at SARS.</label>
-                                <textarea name="sars_info" class="form-input" rows="4"></textarea>
-                            </div>
+                        <div class="flex gap-8 px-4">
+                            <label class="flex items-center gap-2 cursor-pointer group">
+                                <input type="radio" name="sars_related" value="yes" class="w-5 h-5 accent-blue-600" id="sars-yes">
+                                <span class="font-medium group-hover:text-blue-600">Yes</span>
+                            </label>
+                            <label class="flex items-center gap-2 cursor-pointer group">
+                                <input type="radio" name="sars_related" value="no" class="w-5 h-5 accent-blue-600" id="sars-no" checked>
+                                <span class="font-medium group-hover:text-blue-600">No</span>
+                            </label>
+                        </div>
+
+                        <div id="sars-details" class="hidden-details px-4 space-y-4">
+                            <p class="text-sm italic text-slate-500">If yes, please provide full name, relationship and their position at SARS.</p>
+                            <textarea name="sars_info" class="form-input" rows="3" placeholder="Enter details here..."></textarea>
                         </div>
                     </section>
 
-                    <button type="submit" class="w-full bg-talent-blue text-white font-black py-5 rounded-lg shadow-xl hover:bg-slate-900 transition-all text-xl uppercase tracking-widest">
-                        Submit Official Quiz Responses
+                    <button type="submit" class="w-full gradient-blue text-white font-bold py-4 rounded-xl shadow-lg hover:shadow-xl transition-all active:scale-[0.98]">
+                        SUBMIT INTERVIEW RESPONSES
                     </button>
                 </form>
             </div>
 
             <!-- Sidebar Column -->
-            <div class="space-y-8">
+            <div class="space-y-6">
                 <!-- Key Competencies -->
-                <div class="bg-blue-50/50 border border-blue-100 rounded-xl p-8 sticky top-28">
-                    <div class="flex items-center gap-4 mb-10">
-                        <div class="text-blue-500 text-3xl">
-                            <i class="fa-regular fa-star"></i>
+                <div class="bg-blue-50 border border-blue-100 rounded-2xl p-6 shadow-sm sticky top-24">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-blue-600 shadow-sm border border-blue-100">
+                            <i class="fa-solid fa-star"></i>
                         </div>
-                        <h3 class="font-bold text-blue-900 leading-tight text-xl">KEY COMPETENCIES<br>WE VALUE</h3>
+                        <h3 class="font-bold text-blue-900 leading-tight">KEY COMPETENCIES<br>WE VALUE</h3>
                     </div>
 
-                    <div class="space-y-2">
-                        <div class="competency-item">
-                            <i class="fa-solid fa-clipboard-list text-blue-400 w-6"></i>
-                            <span class="font-semibold text-slate-700">Organization & Time Management</span>
+                    <div class="space-y-6">
+                        <div class="flex gap-4 items-start">
+                            <i class="fa-solid fa-clipboard-list competency-icon mt-1"></i>
+                            <div>
+                                <h4 class="font-semibold text-slate-800 text-sm">Organization & Time Management</h4>
+                            </div>
                         </div>
-                        <div class="competency-item">
-                            <i class="fa-solid fa-comments text-blue-400 w-6"></i>
-                            <span class="font-semibold text-slate-700">Communication Skills</span>
+                        <hr class="border-blue-100">
+                        <div class="flex gap-4 items-start">
+                            <i class="fa-solid fa-comments competency-icon mt-1"></i>
+                            <div>
+                                <h4 class="font-semibold text-slate-800 text-sm">Communication Skills</h4>
+                            </div>
                         </div>
-                        <div class="competency-item">
-                            <i class="fa-solid fa-display text-blue-400 w-6"></i>
-                            <span class="font-semibold text-slate-700">Attention to Detail & Accuracy</span>
+                        <hr class="border-blue-100">
+                        <div class="flex gap-4 items-start">
+                            <i class="fa-solid fa-desktop competency-icon mt-1"></i>
+                            <div>
+                                <h4 class="font-semibold text-slate-800 text-sm">Attention to Detail & Accuracy</h4>
+                            </div>
                         </div>
-                        <div class="competency-item">
-                            <i class="fa-solid fa-users text-blue-400 w-6"></i>
-                            <span class="font-semibold text-slate-700">Teamwork & Adaptability</span>
+                        <hr class="border-blue-100">
+                        <div class="flex gap-4 items-start">
+                            <i class="fa-solid fa-users competency-icon mt-1"></i>
+                            <div>
+                                <h4 class="font-semibold text-slate-800 text-sm">Teamwork & Adaptability</h4>
+                            </div>
                         </div>
-                        <div class="competency-item">
-                            <i class="fa-solid fa-lightbulb text-blue-400 w-6"></i>
-                            <span class="font-semibold text-slate-700">Initiative & Problem Solving</span>
+                        <hr class="border-blue-100">
+                        <div class="flex gap-4 items-start">
+                            <i class="fa-solid fa-lightbulb competency-icon mt-1"></i>
+                            <div>
+                                <h4 class="font-semibold text-slate-800 text-sm">Initiative & Problem Solving</h4>
+                            </div>
                         </div>
-                        <div class="competency-item">
-                            <i class="fa-solid fa-lock text-blue-400 w-6"></i>
-                            <span class="font-semibold text-slate-700">Professionalism & Confidentiality</span>
+                        <hr class="border-blue-100">
+                        <div class="flex gap-4 items-start">
+                            <i class="fa-solid fa-lock competency-icon mt-1"></i>
+                            <div>
+                                <h4 class="font-semibold text-slate-800 text-sm">Professionalism & Confidentiality</h4>
+                            </div>
                         </div>
                     </div>
                 </div>
